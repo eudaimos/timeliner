@@ -1,0 +1,11 @@
+{
+  "name": "timelines",
+  "version": "0.1.0",
+  "description": "utilities to make building timelines easy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "eudaimos",
+  "license": "Apache-2.0"
+}
