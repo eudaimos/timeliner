@@ -1,10 +1,10 @@
 {
-  "name": "timelines",
+  "name": "timeliner",
   "version": "0.1.0",
   "description": "utilities to make building timelines easy",
   "repository": {
     "type": "git",
-    "url": "https://github.com/eudaimos/timelines.git"
+    "url": "https://github.com/eudaimos/timeliner.git"
   },
   "author": "eudaimos",
   "license": "Apache-2.0",

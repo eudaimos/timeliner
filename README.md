@@ -1,4 +1,4 @@
-# timelines
+# timeliner
 
 Utilities to make building timelines easy
 
