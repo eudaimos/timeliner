@@ -4,10 +4,42 @@
 ## 
 
 
+### data
+
+![data](./grammar/data.svg)
+
+References: [options](#options), [timeline](#timeline)
+
+### options
+
+![options](./grammar/options.svg)
+
+Used by: [data](#data)
+References: [optionsstart](#optionsstart), [option](#option), [optionsblock](#optionsblock)
+
+### optionsstart
+
+![optionsstart](./grammar/optionsstart.svg)
+
+Used by: [options](#options)
+
+### optionsblock
+
+![optionsblock](./grammar/optionsblock.svg)
+
+Used by: [options](#options)
+
+### option
+
+![option](./grammar/option.svg)
+
+Used by: [options](#options)
+
 ### timeline
 
 ![timeline](./grammar/timeline.svg)
 
+Used by: [data](#data)
 References: [spot](#spot)
 
 ### spot
@@ -42,7 +74,7 @@ References: [cblock](#cblock), [line](#line), [title](#title)
 ![cblock](./grammar/cblock.svg)
 
 Used by: [content](#content)
-References: [line](#line), [title](#title), [details](#details)
+References: [bulletevent](#bulletevent), [title](#title), [line](#line), [details](#details)
 
 ### line
 
@@ -51,24 +83,37 @@ References: [line](#line), [title](#title), [details](#details)
 Used by: [content](#content), [cblock](#cblock)
 References: [details](#details)
 
+### bulletevent
+
+![bulletevent](./grammar/bulletevent.svg)
+
+Used by: [cblock](#cblock)
+References: [bullet](#bullet), [range](#range), [datetimedata](#datetimedata), [details](#details)
+
 ### details
 
 ![details](./grammar/details.svg)
 
-Used by: [cblock](#cblock), [line](#line)
+Used by: [cblock](#cblock), [line](#line), [bulletevent](#bulletevent)
+
+### bullet
+
+![bullet](./grammar/bullet.svg)
+
+Used by: [bulletevent](#bulletevent)
 
 ### range
 
 ![range](./grammar/range.svg)
 
-Used by: [spot](#spot)
+Used by: [spot](#spot), [bulletevent](#bulletevent)
 References: [datetimedata](#datetimedata)
 
 ### datetimedata
 
 ![datetimedata](./grammar/datetimedata.svg)
 
-Used by: [spot](#spot), [range](#range)
+Used by: [spot](#spot), [bulletevent](#bulletevent), [range](#range)
 References: [date](#date), [worldtimeduration](#worldtimeduration), [worldtime](#worldtime)
 
 ### date

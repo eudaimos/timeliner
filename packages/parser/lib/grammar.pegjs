@@ -4,8 +4,34 @@
       return parseInt(nn.join(''), 10);
     }
     return parseInt(nn, 10);
-  } 
+  }
+  
+  function optsAtoO(opts) {
+  	if (!Array.isArray(opts)) {
+      return opts;
+    }
+    return opts.reduce((acc, { key, value }) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+  }
 }
+
+data
+  = o:options t:timeline { return { options: o, timeline: t }; }
+  / t:timeline { return { options: {}, timeline: t }; }
+
+options
+  = optionsstart opts:(o:option '\n' optionsblock? { return o; })* { return optsAtoO(opts); }
+
+optionsstart
+  = '|-' '-'* '%' ('t' 'ime'? 'l' 'i'? 'n' 'e'? 'r') '%' '-'* '|' [ \t]* '\n'
+
+optionsblock
+  = '|-' '-'* '|\n'
+
+option
+  = '|' key:[^:]+ ':' value:[^|]* '|' { return { key: key.join('').trim(), value: value.join('').trim() }; }
 
 timeline
   = '\n'* s:spot+ { return s; }
@@ -31,17 +57,24 @@ content
   / cblock+
 
 cblock
-  = c:line !title { return c; }
+  = e:bulletevent !title { return e; }
+  / c:line !title { return c; }
   / d:details !. { return d || ''; }
 
 line
   = d:details? '\n' { return d || ''; }
 
+bulletevent
+  = bullet dt:(r:range { return r; } / dt:datetimedata { return { dt }; }) t:(' ' d:details { return d; })? '\n' { return { ...dt, title: t.trim() }; }
+
 details
   = chars:[^\n]+ { return chars.join(''); }
 
+bullet
+  = '- ' / '+ ' / '* '
+
 range
-  = f:datetimedata '…' t:datetimedata { return { range: [f, t] }; }
+  = f:datetimedata ('…' / '...') t:datetimedata { return { range: [f, t] }; }
 
 datetimedata
   = '%' d:date '%' dur:worldtimeduration '%' { return { ...d, ...dur, hasTime: true }; }
@@ -57,7 +90,7 @@ year
   = [0-9][0-9][0-9][0-9]
 
 worldtimeduration
-  = f:worldtime '…' t:worldtime { return { duration: [f, t] }; }
+  = f:worldtime ('…' / '...') t:worldtime { return { duration: [f, t] }; }
 
 worldtime
   = t:time z:zone { return { ...t, ...z }; }
