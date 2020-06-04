@@ -5,7 +5,7 @@
     }
     return parseInt(nn, 10);
   }
-  
+
   function optsAtoO(opts) {
   	if (!Array.isArray(opts)) {
       return opts;
@@ -65,7 +65,7 @@ line
   = d:details? '\n' { return d || ''; }
 
 bulletevent
-  = bullet dt:(r:range { return r; } / dt:datetimedata { return { dt }; }) t:(' ' d:details { return d; })? '\n' { return { ...dt, title: t.trim() }; }
+  = l:('  ')* bullet dt:(r:range { return r; } / dt:datetimedata { return { dt }; }) t:(' ' d:details { return d; })? '\n' { return { level: 1 + l.length, title: t.trim(), ...dt }; }
 
 details
   = chars:[^\n]+ { return chars.join(''); }
@@ -110,7 +110,7 @@ tz
 time
   = h:d2 ':' m:d2 ':' s:d2 ampm:meridiem? { return { hour: makeInt(h), minute: makeInt(m), second: makeInt(s), meridiem: ampm }; }
   / h:d2 ':' m:d2 ampm:meridiem? { return { hour: makeInt(h), minute: makeInt(m), meridiem: ampm }; }
-  / h:d2 ampm:meridiem? { return { hour: makeInt(h), meridiem: ampm }; }
+  / h:d2 ampm:meridiem? { return { hour: makeInt(h), minute: 0, meridiem: ampm }; }
 
 d2
   = [0-9][0-9]
