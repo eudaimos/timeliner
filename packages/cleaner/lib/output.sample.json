@@ -1,0 +1,85 @@
+[
+  {
+    "title": "top title",
+    "level": 1,
+    "dt": {
+      "year": 2009,
+      "hasTime": false
+    },
+    "content": [],
+    "children": [
+      {
+        "title": "next tier title",
+        "level": 2,
+        "range": [
+          {
+            "year": 2009,
+            "month": 11,
+            "day": 21,
+            "duration": [
+              {
+                "hour": 12,
+                "minute": 0,
+                "meridiem": null,
+                "offset": {
+                  "hours": -7,
+                  "mins": 0
+                }
+              },
+              {
+                "hour": 2,
+                "minute": 0,
+                "meridiem": null
+              }
+            ],
+            "hasTime": true
+          },
+          {
+            "year": 2009,
+            "month": 11,
+            "day": 21,
+            "hasTime": false
+          }
+        ],
+        "content": ["", "something", "", "another thing", ""]
+      },
+      {
+        "title": "subtitle",
+        "level": 2,
+        "dt": {
+          "year": 2009,
+          "month": 12,
+          "day": 25,
+          "hasTime": false
+        },
+        "content": [
+          "",
+          "more",
+          "to this story than meets the eye",
+          "",
+          "how remarkable",
+          ""
+        ],
+        "children": [
+          {
+            "title": "something else",
+            "level": 3,
+            "dt": null,
+            "content": ["", "get them", ""]
+          }
+        ]
+      },
+      {
+        "title": "another",
+        "level": 2,
+        "dt": {
+          "year": 2010,
+          "month": 1,
+          "day": 1,
+          "hasTime": false
+        },
+        "content": []
+      }
+    ]
+  }
+]

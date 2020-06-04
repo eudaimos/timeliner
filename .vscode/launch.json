@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Cleaner Test",
+      "program": "${workspaceFolder}/packages/cleaner/__tests__/cleaner.test",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
